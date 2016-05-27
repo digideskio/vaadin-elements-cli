@@ -8,18 +8,54 @@ var chalk = require('chalk');
 var ProgressBar = require('progress');
 var fs = require('fs');
 var RSVP = require('rsvp');
-var jsonfile = require('jsonfile');
 var path = require('path');
+var Git = require("nodegit");
 
-//var consumerInfo = jsonfile.readFileSync(path.join(__dirname, './consumer.json'));
+var vaadinElements = ['vaadin-grid', 'vaadin-combo-box', 'vaadin-icons', 'vaadin-upload', 'vaadin-date-picker', 'vaadin-core-elements', 'vaadin-charts'];
+
+function cloneGitRepository(url, targetFolder) {
+  Git.Clone(url, targetFolder)
+    // Look up this known commit.
+    .then(function(repo) {
+      // Use a known commit sha from this repository.
+      return repo.getMasterCommit();
+    })
+    // Look up a specific file within that commit.
+    .then(function(commit) {
+      return commit.getEntry("README.md");
+    })
+    // Get the blob contents from the file.
+    .then(function(entry) {
+      // Patch the blob to contain a reference to the entry.
+      return entry.getBlob().then(function(blob) {
+        blob.entry = entry;
+        return blob;
+      });
+    })
+    // Display information about the blob.
+    .then(function(blob) {
+      // Show the path, sha, and filesize in bytes.
+      console.log(blob.entry.path() + blob.entry.sha() + blob.rawsize() + "b");
+
+      // Show a spacer.
+      console.log(Array(72).join("=") + "\n\n");
+
+      // Show the entire file.
+      console.log(String(blob));
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
+}
 
 program
-  .arguments('<file>')
-  //.option('-u, --username <username>', 'The user to authenticate as')
-  //.option('-p, --password <password>', 'The user\'s password')
-  //.option('-b, --browser', 'Open the snippet in the system browser')
-  .action(function(file) {
-    console.log("asd");
+  .command('init <element>')
+  .action(function(element) {
+    if (vaadinElements.indexOf(element) > -1) {
+      cloneGitRepository('https://github.com/vaadin/' + element + '.git', './' + element);
+    } else {
+      console.log("Element not found. Use vaadin-elements -h");
+    }
+  });
 
-  })
-  .parse(process.argv);
+program.parse(process.argv);

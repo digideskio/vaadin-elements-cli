@@ -5,19 +5,19 @@ A command-line tool for [Vaadin Elements].
 
 ## Usage
 
-     vaadin-elements [options] <file>
+     vaadin-elements init <element-name>
 
      Options:
 
         -h, --help                 output usage information
-        -u, --username <username>  the user to authenticate as
+        -f, --folder <folder>  folder
         -p, --password <password>  the user's password
         -b, --browser              open the snippet in the system browser
 
 ## Installation
 
-- Install [Node.js](http://nodejs.org/) and [npm](https://npmjs.org/)
+- Install [Node.js](http://nodejs.org/) and [git](https://git-scm.com/)
 - Run `npm install -g vaadin-elements-cli`
-- Run `vaadin-elements-cl --help` or `vaadin-elements-cl something` to do something.
+- Run `vaadin-elements init <element-name>`
 
 [Vaadin Elements]: https://vaadin.com/elements

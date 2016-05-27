@@ -50,9 +50,11 @@ function cloneGitRepository(url, targetFolder) {
 
 program
   .command('init <element>')
-  .action(function(element) {
+  .option('-f, --folder <folder>', 'Initialized directory')
+  .action(function(element, program) {
+    var targetFolder = program.folder || element;
     if (vaadinElements.indexOf(element) > -1) {
-      cloneGitRepository('https://github.com/vaadin/' + element + '.git', './' + element);
+      cloneGitRepository('https://github.com/vaadin/' + element + '.git', './' + targetFolder);
     } else {
       console.log("Element not found. Use vaadin-elements -h");
     }

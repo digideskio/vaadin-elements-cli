@@ -10,11 +10,12 @@ A command-line tool for [Vaadin Elements].
      Options:
 
         -h, --help                 output usage information
-        -f, --folder <folder>      folder
+        -d, --dependencies         install npm and bower dependencies
+        -f, --folder <folder>      directory name
 
 ## Installation
 
-- Install [Node.js](http://nodejs.org/) and [git](https://git-scm.com/)
+- Install [Node.js](http://nodejs.org/), [git](https://git-scm.com/) and [bower](http://bower.io/)
 - Run `npm install -g vaadin-elements-cli`
 - Run `vaadin-elements init <element-name>`
 

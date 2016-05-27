@@ -1,0 +1,34 @@
+{
+  "name": "vaadin-elements-cli",
+  "version": "0.0.1",
+  "description": "A command-line tool for Vaadin Elements.",
+  "main": "vaadin-elements-cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/samiheikki/vaadin-elements-cli.git"
+  },
+  "keywords": [
+    "vaadin-elements-cli",
+    "vaadin",
+    "cli",
+    "polymer"
+  ],
+  "author": "Sami Suo-Heikki",
+  "license": "Apache-2.0",
+  "bin": {
+    "vaadin-elements": "./index.js"
+  },
+  "dependencies": {
+    "chalk": "^1.1.1",
+    "co": "^4.6.0",
+    "co-prompt": "^1.0.0",
+    "commander": "^2.9.0",
+    "jsonfile": "^2.2.3",
+    "progress": "^1.1.8",
+    "rsvp": "^3.1.0",
+    "superagent": "^1.4.0"
+  }
+}

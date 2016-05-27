@@ -10,9 +10,7 @@ A command-line tool for [Vaadin Elements].
      Options:
 
         -h, --help                 output usage information
-        -f, --folder <folder>  folder
-        -p, --password <password>  the user's password
-        -b, --browser              open the snippet in the system browser
+        -f, --folder <folder>      folder
 
 ## Installation
 
